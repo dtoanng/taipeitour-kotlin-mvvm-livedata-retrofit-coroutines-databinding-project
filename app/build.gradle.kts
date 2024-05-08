@@ -1,20 +1,27 @@
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    id(BuildPlugins.ANDROID_APPLICATION)
+    id(BuildPlugins.KOTLIN_ANDROID)
 }
 
 android {
-    namespace = "com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project"
-    compileSdk = 34
+    packaging { resources.excludes.add("META-INF/*") }
+
+    namespace = AppConfig.NAMESPACE
+    compileSdk = AppConfig.targetSdk
 
     defaultConfig {
-        applicationId = "com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AppConfig.APPLICATION_ID
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfig.TEST_INSTRUMENTATION_RUNNER
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -23,23 +30,17 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = BuildDependencyVersions.JVM_TARGET
     }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    addDependencies()
 }
