@@ -25,6 +25,10 @@ object BuildDependencyVersions {
     const val ANDROID_RX_ANDROID = "2.1.1"
     const val ANDROID_DATA_BINDING = "8.3.1"
 
+    const val RETROFIT = "2.11.0"
+    const val RETROFIT_CONVERTER_GSON = "2.11.0"
+    const val OKHTTP3 = "4.12.0"
+
     const val GOOGLE_GSON = "2.10.1"
     const val GLIDE = "4.14.2"
     const val FRAGMENT_KTX = "1.5.5"

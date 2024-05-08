@@ -30,6 +30,11 @@ object AppDependencies {
     const val RXJAVA = "io.reactivex.rxjava2:rxjava:${BuildDependencyVersions.RX_JAVA}"
     const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${BuildDependencyVersions.ANDROID_RX_ANDROID}"
 
+    // square
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${BuildDependencyVersions.RETROFIT}"
+    const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${BuildDependencyVersions.RETROFIT_CONVERTER_GSON}"
+    const val OKHTTP3 = "com.squareup.okhttp3:okhttp:${BuildDependencyVersions.OKHTTP3}"
+
     const val JUNIT = "junit:junit:${BuildDependencyVersions.JUNIT}"
     const val EXT_JUNIT = "androidx.test.ext:junit:${BuildDependencyVersions.EXT_JUNIT}"
     const val ESPRESSO = "androidx.test.espresso:espresso-core:${BuildDependencyVersions.ESPRESSO}"
