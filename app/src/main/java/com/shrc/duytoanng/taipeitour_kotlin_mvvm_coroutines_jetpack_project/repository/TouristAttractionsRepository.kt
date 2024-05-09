@@ -1,0 +1,7 @@
+package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.repository
+
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.remote.TouristAttractionsApiService
+import javax.inject.Inject
+
+class TouristAttractionsRepository @Inject constructor(private val apiService: TouristAttractionsApiService) : ITouristAttractionRepository {
+}
