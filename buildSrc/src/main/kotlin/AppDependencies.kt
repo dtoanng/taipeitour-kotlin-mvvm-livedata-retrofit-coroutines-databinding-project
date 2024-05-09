@@ -26,6 +26,10 @@ object AppDependencies {
     const val ANDROID_GLIDE = "com.github.bumptech.glide:glide:${BuildDependencyVersions.GLIDE}"
     const val ANDROID_DATA_BINDING = "androidx.databinding:databinding-compiler-common:${BuildDependencyVersions.ANDROID_DATA_BINDING}"
 
+    // dagger-hilt
+    const val DAGGER_HILT_ANDROID = "com.google.dagger:hilt-android:${BuildDependencyVersions.DAGGER_HILT_ANDROID}"
+    const val HILT_COMPILER = "com.google.dagger:hilt-compiler:${BuildDependencyVersions.HILT_COMPILER}"
+
     const val GOOGLE_GSON = "com.google.code.gson:gson:${BuildDependencyVersions.GOOGLE_GSON}"
     const val RXJAVA = "io.reactivex.rxjava2:rxjava:${BuildDependencyVersions.RX_JAVA}"
     const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${BuildDependencyVersions.ANDROID_RX_ANDROID}"

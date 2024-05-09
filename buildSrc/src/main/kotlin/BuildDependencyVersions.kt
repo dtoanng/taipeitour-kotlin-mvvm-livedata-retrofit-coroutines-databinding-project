@@ -29,6 +29,9 @@ object BuildDependencyVersions {
     const val RETROFIT_CONVERTER_GSON = "2.11.0"
     const val OKHTTP3 = "4.12.0"
 
+    const val HILT_COMPILER = "2.44"
+    const val DAGGER_HILT_ANDROID = "2.44"
+
     const val GOOGLE_GSON = "2.10.1"
     const val GLIDE = "4.14.2"
     const val FRAGMENT_KTX = "1.5.5"

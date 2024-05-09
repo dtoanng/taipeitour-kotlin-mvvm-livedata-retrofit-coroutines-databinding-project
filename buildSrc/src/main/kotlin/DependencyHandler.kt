@@ -51,6 +51,8 @@ fun DependencyHandler.addDependencies() {
     implementation(AppDependencies.RXJAVA)
     implementation(AppDependencies.RX_ANDROID)
     implementation(AppDependencies.ROUNDED_IMAGEVIEW)
+    implementation(AppDependencies.DAGGER_HILT_ANDROID)
+    kapt(AppDependencies.HILT_COMPILER)
     testImplementation(AppDependencies.JUNIT)
     androidTestImplementation(AppDependencies.EXT_JUNIT)
     androidTestImplementation(AppDependencies.ESPRESSO)
