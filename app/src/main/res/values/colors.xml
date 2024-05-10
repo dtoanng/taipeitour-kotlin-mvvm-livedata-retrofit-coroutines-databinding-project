@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="TITLE_AREA">#f2f2f2</color>
+    <color name="BACKGROUND_AREA">#f2f2f2</color>
+    <color name="COLOR_3695DD">#3695dd</color>
+    <color name="SUB_HEADER">#979696</color>
+    <color name="ATTRACTION_PREVIEW_B_AREA">#FFFFFFFF</color>
+    <color name="ATTRACTION_DESCIPTION">#e6252525</color>
 </resources>

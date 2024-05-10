@@ -1,6 +1,6 @@
 package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.di
 
-import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.datasource.remote.ApiUrl
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.datasource.remote.ApiConstants
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.datasource.remote.AttractionsApiService
 import dagger.Module
 import dagger.Provides
@@ -21,7 +21,7 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideBaseUrl(): String {
-        return ApiUrl.BASE_URL
+        return ApiConstants.BASE_URL
     }
 
     @Singleton

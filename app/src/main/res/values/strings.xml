@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">taipeitour-kotlin-mvvm-coroutines-jetpack-project</string>
+    <string name="app_name">taipeitour</string>
+    <string name="dummy_attraction_name">National Sun Yat-sen Memorial Hall</string>
+    <string name="dummy_attraction_des">The Auditorium and Surrounding Facilities Upgrade Project is expected to last from 2024 to the end of 2026. The renovation and upgrade will involve the replacement of electro-mechanical and air-conditioning systems. In order to facilitate the renovation, the hall will be closed from February 26, 2024. Chungshan Cultural Park will remain open to the public.\r\n\r\nDesigned by local architect Wang Da-hung, this memorial hall was established in memory of Dr. Sun Yat-sen, the father of the Republic of China. The hall also serves an educational and research role, hosting various cultural and art events throughout the year, including the Golden Horse Awards, Golden Bell Awards, and Culture Awards. The hall is surrounded by a large park, further making it a popular weekend escape for city residents.</string>
+    <string name="dummy_attraction_url">https://www.travel.taipei/en/attraction/details/446</string>
 </resources>

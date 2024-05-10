@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/attraction_navigation"
+    app:startDestination="@id/attractionsActivity">
+
+    <activity
+        android:id="@+id/attractionsActivity"
+        android:name="com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.AttractionsActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
+</navigation>

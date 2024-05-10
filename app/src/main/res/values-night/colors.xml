@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="TITLE_AREA">#DD2E2E2E</color>
+    <color name="BACKGROUND_AREA">#232323</color>
+    <color name="COLOR_3695DD">#3695dd</color>
+    <color name="SUB_HEADER">#CDCBCB</color>
+    <color name="ATTRACTION_PREVIEW_B_AREA">#8F8F8F</color>
+    <color name="ATTRACTION_DESCIPTION">#CDCBCB</color>
+</resources>
