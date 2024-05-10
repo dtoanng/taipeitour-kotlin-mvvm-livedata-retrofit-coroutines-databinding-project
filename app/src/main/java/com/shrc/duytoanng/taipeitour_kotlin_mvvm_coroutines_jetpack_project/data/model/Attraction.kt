@@ -2,7 +2,7 @@ package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.dat
 
 import com.google.gson.annotations.SerializedName
 
-data class TouristAttraction(
+data class Attraction(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")

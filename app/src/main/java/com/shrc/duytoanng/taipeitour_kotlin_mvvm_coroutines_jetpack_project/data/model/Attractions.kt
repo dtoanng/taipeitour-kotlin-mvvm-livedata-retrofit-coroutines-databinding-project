@@ -2,9 +2,9 @@ package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.dat
 
 import com.google.gson.annotations.SerializedName
 
-data class AllTouristAttractions(
+data class Attractions(
     @SerializedName("total")
     val total: Int,
     @SerializedName("data")
-    val touristAttraction: List<TouristAttraction>
+    val touristAttraction: List<Attraction>
 )

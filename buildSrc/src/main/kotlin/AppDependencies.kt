@@ -20,11 +20,15 @@ object AppDependencies {
     const val ANDROID_APPCOMPAT = "androidx.appcompat:appcompat:${BuildDependencyVersions.ANDROID_APPCOMPAT}"
     const val ANDROID_CORE = "androidx.core:core-ktx:${BuildDependencyVersions.ANDROID_CORE_KTX}"
     const val ANDROID_MATERIAL = "com.google.android.material:material:${BuildDependencyVersions.ANDROID_MATERIAL}"
+    const val ANDROID_PAGING = "androidx.paging:paging-runtime:${BuildDependencyVersions.ANDROID_PAGING}"
     const val ANDROID_RECYCLE_VIEW = "androidx.recyclerview:recyclerview:${BuildDependencyVersions.ANDROID_RECYCLE_VIEW}"
     const val ANDROID_CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${BuildDependencyVersions.ANDROID_CONSTRAINT_LAYOUT}"
     const val ANDROID_DATASTORE = "androidx.datastore:datastore-preferences:${BuildDependencyVersions.ANDROID_DATASTORE}"
     const val ANDROID_GLIDE = "com.github.bumptech.glide:glide:${BuildDependencyVersions.GLIDE}"
     const val ANDROID_DATA_BINDING = "androidx.databinding:databinding-compiler-common:${BuildDependencyVersions.ANDROID_DATA_BINDING}"
+    const val ANDROID_LIFECYCLE = "androidx.lifecycle:lifecycle-viewmodel-ktx:${BuildDependencyVersions.ANDROID_LIFECYCLE}"
+    const val ANDROID_NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${BuildDependencyVersions.ANDROID_NAVIGATION}"
+    const val ANDROID_NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${BuildDependencyVersions.ANDROID_NAVIGATION}"
 
     // dagger-hilt
     const val DAGGER_HILT_ANDROID = "com.google.dagger:hilt-android:${BuildDependencyVersions.DAGGER_HILT_ANDROID}"
@@ -38,6 +42,7 @@ object AppDependencies {
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${BuildDependencyVersions.RETROFIT}"
     const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${BuildDependencyVersions.RETROFIT_CONVERTER_GSON}"
     const val OKHTTP3 = "com.squareup.okhttp3:okhttp:${BuildDependencyVersions.OKHTTP3}"
+    const val OKHTTP3_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${BuildDependencyVersions.OKHTTP3_INTERCEPTOR}"
 
     const val JUNIT = "junit:junit:${BuildDependencyVersions.JUNIT}"
     const val EXT_JUNIT = "androidx.test.ext:junit:${BuildDependencyVersions.EXT_JUNIT}"

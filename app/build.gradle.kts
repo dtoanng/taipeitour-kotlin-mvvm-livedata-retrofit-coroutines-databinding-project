@@ -9,7 +9,7 @@ android {
     packaging { resources.excludes.add("META-INF/*") }
 
     namespace = AppConfig.NAMESPACE
-    compileSdk = AppConfig.targetSdk
+    compileSdk = 34
 
     defaultConfig {
         applicationId = AppConfig.APPLICATION_ID
