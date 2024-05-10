@@ -23,7 +23,6 @@
             android:clickable="true"
             android:contentDescription="@string/dummy_back"
             android:focusable="true"
-            android:onClick="onClick"
             tools:src="@drawable/ic_title_back" />
     </LinearLayout>
 
@@ -57,7 +56,6 @@
         android:layout_alignParentEnd="true"
         android:layout_gravity="right"
         android:gravity="center_horizontal|center_vertical"
-        android:visibility="gone"
         tools:ignore="RtlHardcoded"
         tools:visibility="visible">
 
@@ -67,7 +65,6 @@
             android:layout_height="24dp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="onClick"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/en" />
     </LinearLayout>
 </RelativeLayout>
