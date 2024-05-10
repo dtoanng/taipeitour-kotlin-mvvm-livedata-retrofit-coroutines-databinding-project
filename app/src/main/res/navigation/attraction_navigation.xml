@@ -3,11 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/attraction_navigation"
-    app:startDestination="@id/attractionsActivity">
+    app:startDestination="@id/attractsHomeFragment">
 
-    <activity
-        android:id="@+id/attractionsActivity"
-        android:name="com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.AttractionsActivity"
-        android:label="activity_home"
-        tools:layout="@layout/activity_home" />
+    <fragment
+        android:id="@+id/attractsHomeFragment"
+        android:name="com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.home.AttractsHomeFragment"
+        android:label="AttractsHomeFragment"
+        tools:layout="@layout/fragment_attractions_home">
+        <action
+            android:id="@+id/action_attractsHomeFragment_to_attractionDetailFragment"
+            app:destination="@id/attractionDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/attractionDetailFragment"
+        android:name="com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.detail.AttractionDetailFragment"
+        android:label="fragment_attraction_detail"
+        tools:layout="@layout/fragment_attraction_detail" />
 </navigation>

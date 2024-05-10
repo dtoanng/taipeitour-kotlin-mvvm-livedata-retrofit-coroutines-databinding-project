@@ -20,12 +20,5 @@ class AttractionsActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val touristAttractions: AttractionsViewModel by viewModels()
-        touristAttractions.getTouristAttractions("vi")
-        lifecycleScope.launch {
-            touristAttractions.touristAttractions.collect { dataState ->
-                Log.d("AttractionsActivity", "dataState: ${Gson().toJson(dataState)}")
-            }
-        }
     }
 }
