@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.home.AttractsHomeFragment">
+    tools:context="ui.home.AttractsHomeFragment"
+    android:background="@color/BACKGROUND_AREA">
 
     <include
         android:id="@+id/attractionDetailTitleArea"
@@ -20,8 +21,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:paddingBottom="50dp"
         android:theme="@style/ScrollEdgeEffect"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

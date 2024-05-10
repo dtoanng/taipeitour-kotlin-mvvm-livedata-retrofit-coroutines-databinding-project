@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.AttractionItemBinding
+
 
 class AttractionsAdapter(private var attractions: MutableList<Attraction>, private val context: Context?) :
     RecyclerView.Adapter<AttractionsAdapter.AttractionViewHolder>() {
@@ -29,8 +32,12 @@ class AttractionsAdapter(private var attractions: MutableList<Attraction>, priva
             this.attractionName.text = attractions[position].name
             this.attractionAddress.text = attractions[position].address
             context ?: return
-            if (attractions[position].images.isNotEmpty())
-                Glide.with(context).load(attractions[position].images[0]).centerCrop().into(this.attractionPicture)
+            if (attractions[position].images.isNotEmpty()) {
+                Glide.with(context).load(attractions[position].images.first().src)
+                    .centerCrop()
+//                    .transform(CenterCrop(), RoundedCorners(20))
+                    .into(this.attractionPicture)
+            }
         }
     }
 
