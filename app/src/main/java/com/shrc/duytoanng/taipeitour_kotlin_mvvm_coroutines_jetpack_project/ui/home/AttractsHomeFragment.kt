@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
-import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.adapter.AttractionsAdapter
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.R
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.FragmentAttractionsHomeBinding
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.AttractionsViewModel
@@ -23,6 +24,7 @@ class AttractsHomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        touristAttractions.getTouristAttractions("vi")
     }
 
     override fun onCreateView(
@@ -35,28 +37,37 @@ class AttractsHomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        touristAttractions.getTouristAttractions("vi")
+
         lifecycleScope.launch {
             touristAttractions.touristAttractions.collect { dataState ->
-                when(dataState) {
+                when (dataState) {
                     is DataState.Loading -> {
                         Log.d("AttractionsActivity", "DataState.Loading")
                     }
+
                     is DataState.Error -> {
                         Log.d("AttractionsActivity", "DataState.Error: ${Gson().toJson(dataState)}")
                     }
+
                     else -> {
-                        Log.d("AttractionsActivity", "DataState.Success: ${Gson().toJson(dataState)}")
-                        attractionsAdapter = AttractionsAdapter(attractions = (dataState as DataState.Success).data.touristAttraction as MutableList<Attraction>, context)
+                        Log.d(
+                            "AttractionsActivity",
+                            "DataState.Success: ${Gson().toJson(dataState)}"
+                        )
+                        attractionsAdapter = AttractionsAdapter(
+                            attractions = (dataState as DataState.Success).data.touristAttraction as MutableList<Attraction>
+                        )
                         mBinding.rvAttractions.adapter = attractionsAdapter
                         mBinding.loadingData.visibility = View.GONE
+                        attractionsAdapter.setOnClickListener(object :
+                            AttractionsAdapter.OnItemClickLister {
+                            override fun onItemClick(attraction: Attraction) {
+                                findNavController().navigate(R.id.attractionDetailFragment)
+                            }
+                        })
                     }
                 }
             }
         }
-    }
-
-    companion object {
-
     }
 }

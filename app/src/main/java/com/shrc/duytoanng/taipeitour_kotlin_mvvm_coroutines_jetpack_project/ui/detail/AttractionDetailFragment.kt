@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.R
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.FragmentAttractionDetailBinding
 
 
 class AttractionDetailFragment : Fragment() {
+
+    private lateinit var binding: FragmentAttractionDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,10 +20,9 @@ class AttractionDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_attractions_home, container, false)
+    ): View {
+        binding = FragmentAttractionDetailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-    }
 }
