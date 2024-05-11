@@ -1,31 +1,34 @@
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree.Companion.main
-
 plugins {
-    id(BuildPlugins.ANDROID_APPLICATION)
-    id(BuildPlugins.KOTLIN_ANDROID)
-    id(BuildPlugins.KOTLIN_KAPT)
-    id(BuildPlugins.DAGGER_HILT)
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.jetbrainsKotlinKapt)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
     packaging { resources.excludes.add("META-INF/*") }
 
-    namespace = AppConfig.NAMESPACE
+    namespace = "com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = AppConfig.APPLICATION_ID
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
+        applicationId = "com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project"
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner = AppConfig.TEST_INSTRUMENTATION_RUNNER
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildFeatures {
         dataBinding = true
         viewBinding = true
+    }
+
+    hilt {
+        enableAggregatingTask = false
     }
 
     buildTypes {
@@ -47,10 +50,48 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = BuildDependencyVersions.JVM_TARGET
+        jvmTarget = "1.8"
     }
 }
 
 dependencies {
-    addDependencies()
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.navigation.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.navigation.ui.ktx)
+//    implementation(libs.androidx.navigation.navigation.safe.args)
+    implementation(libs.androidx.multidex)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.paging)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    implementation(libs.androidx.databinding.databinding.compiler.common)
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logging)
+
+    implementation(libs.dagger.hilt)
+    kapt(libs.dagger.hilt.compiler)
+
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+
+    implementation(libs.glide)
+
+    implementation(libs.timber)
+    implementation(libs.javax.inject)
+    implementation(libs.gson)
+
+    implementation(libs.ksp.gradlePlugin)
 }
