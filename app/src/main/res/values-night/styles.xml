@@ -16,12 +16,6 @@
     </style>
 
     <style name="backButton">
-        <item name="android:src">@drawable/arrow_back_light</item>
-    </style>
-
-    <style name="ShapeAppearanceOverlayExtended" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
-        <item name="cornerSizeTopLeft">50%</item>
+        <item name="android:src">@drawable/arrow_back_dark</item>
     </style>
 </resources>

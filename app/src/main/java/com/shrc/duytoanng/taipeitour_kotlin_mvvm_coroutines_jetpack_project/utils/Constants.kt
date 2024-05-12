@@ -11,3 +11,6 @@ enum class Constants(countryCode: String) {
     JAPAN("ja"),
     KOREA("ko")
 }
+
+const val MIN_SCALE = 0.85f
+const val MIN_ALPHA = 0.5f

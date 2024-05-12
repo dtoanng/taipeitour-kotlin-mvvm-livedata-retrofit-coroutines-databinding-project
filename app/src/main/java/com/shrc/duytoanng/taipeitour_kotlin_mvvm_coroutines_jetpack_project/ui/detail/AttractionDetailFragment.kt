@@ -1,22 +1,21 @@
 package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.detail
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebViewClient
-import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2.PageTransformer
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.R
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.FragmentAttractionDetailBinding
-import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.AttractionsViewModel
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.base.BaseFragment
-import timber.log.Timber
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.detail.custom.HorizontalMarginItemDecoration
+import kotlin.math.abs
 
 
 class AttractionDetailFragment : BaseFragment<FragmentAttractionDetailBinding>() {
+
+    private lateinit var photoAdapter: AttractionDetailPhotosAdapter
 
     private val attraction by lazy { sharedViewModel.currentAttraction }
     override fun getViewBinding(): FragmentAttractionDetailBinding =
@@ -26,9 +25,46 @@ class AttractionDetailFragment : BaseFragment<FragmentAttractionDetailBinding>()
         super.setupView()
         attraction?.let {
             with(binding) {
+                attractionDetailTitleArea.apply {
+                    topContentName.text = it.name
+                    topBtnBack.visibility = View.VISIBLE
+                    ivSelectedCountry.visibility = View.GONE
+                }
+
                 txtAttractionName.text = it.name
                 txtAttractionDescription.text = it.introduction
-                txtAttractionUrl.text = it.url
+
+                photoAdapter = AttractionDetailPhotosAdapter(it.images)
+                photosPager.apply {
+                    adapter = photoAdapter
+                    offscreenPageLimit = 1
+
+                    val nextItemVisiblePx =
+                        resources.getDimension(R.dimen.viewpager_next_item_visible)
+                    val currentItemHorizontalMarginPx =
+                        resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
+                    val pageTranslationX = nextItemVisiblePx + currentItemHorizontalMarginPx
+                    val pageTransformer = PageTransformer { page: View, position: Float ->
+                        page.translationX = -pageTranslationX * position
+                        page.scaleY = 1 - (0.25f * abs(position))
+                    }
+                    setPageTransformer(pageTransformer)
+                    val itemDecoration = HorizontalMarginItemDecoration(
+                        context,
+                        R.dimen.viewpager_current_item_horizontal_margin
+                    )
+                    addItemDecoration(itemDecoration)
+                }
+
+                attractionDetailTitleArea.icBtnBack.setOnClickListener {
+                    if (attractionWebView.visibility == View.VISIBLE) {
+                        attractionWebView.visibility = View.GONE
+                        binding.fabAttractDetails.text = "Detail"
+                    } else {
+                        sharedViewModel.currentAttraction = null
+                        findNavController().popBackStack()
+                    }
+                }
             }
         }
     }
@@ -36,13 +72,19 @@ class AttractionDetailFragment : BaseFragment<FragmentAttractionDetailBinding>()
     @SuppressLint("SetJavaScriptEnabled")
     override fun setupListener() {
         super.setupListener()
-        binding.txtAttractionUrl.setOnClickListener {
-            Timber.d("ToanClicked: url: ${attraction?.url}")
-            binding.attractionWebView.apply {
-                webViewClient = WebViewClient()
-                webChromeClient = WebChromeClient()
-                settings.javaScriptEnabled = true
-                attraction?.let { att -> loadUrl(att.url) }
+        binding.fabAttractDetails.setOnClickListener {
+            if (binding.attractionWebView.visibility != View.VISIBLE) {
+                binding.attractionWebView.apply {
+                    visibility = View.VISIBLE
+                    webViewClient = WebViewClient()
+                    webChromeClient = WebChromeClient()
+                    settings.javaScriptEnabled = true
+                    attraction?.let { att -> loadUrl(att.url) }
+                }
+                binding.fabAttractDetails.text = "Back"
+            } else {
+                binding.fabAttractDetails.text = "Detail"
+                binding.attractionWebView.visibility = View.GONE
             }
         }
     }
