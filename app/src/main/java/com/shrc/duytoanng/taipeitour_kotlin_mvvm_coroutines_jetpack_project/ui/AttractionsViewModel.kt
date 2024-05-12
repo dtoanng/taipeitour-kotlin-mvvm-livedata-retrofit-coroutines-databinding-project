@@ -1,12 +1,10 @@
 package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attractions
-import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Country
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Language
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.repository.TouristAttractionsRepository
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.utils.SupportedCountries
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.utils.network.DataState
@@ -27,8 +25,8 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
 
     val touristAttractions: MutableStateFlow<DataState<Attractions>> = MutableStateFlow(DataState.Loading)
 
-    private val _currentCountry = MutableStateFlow(SupportedCountries.getDefaultCountry())
-    val currentCountry: StateFlow<Country> = _currentCountry
+    private val _currentLanguage = MutableStateFlow(SupportedCountries.getDefaultCountry())
+    val currentLanguage: StateFlow<Language> = _currentLanguage
 
     fun getTouristAttractions(lang: String) {
         viewModelScope.launch {
@@ -38,10 +36,10 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
         }
     }
 
-    fun changeLanguage(country: Country) {
-        Timber.d("dtoanng: $country")
+    fun changeLanguage(language: Language) {
+        Timber.d("Selected language: $language")
         viewModelScope.launch {
-            _currentCountry.value = country
+            _currentLanguage.value = language
         }
     }
 

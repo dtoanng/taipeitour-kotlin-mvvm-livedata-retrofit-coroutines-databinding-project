@@ -47,7 +47,7 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
         }
 
         lifecycleScope.launch {
-            sharedViewModel.currentCountry.collect { country ->
+            sharedViewModel.currentLanguage.collect { country ->
                 Timber.d("Selected country: $country")
                 binding.attractionTitleArea.ivSelectedCountry.setImageDrawable(
                     ContextCompat.getDrawable(

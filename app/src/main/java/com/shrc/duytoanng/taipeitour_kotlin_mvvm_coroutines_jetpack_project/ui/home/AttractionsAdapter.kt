@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.AttractionItemBinding
 
@@ -18,7 +19,8 @@ class AttractionsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AttractionViewHolder {
-        val attractionItemBinding = AttractionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val attractionItemBinding =
+            AttractionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AttractionViewHolder(attractionItemBinding)
     }
 
@@ -47,7 +49,12 @@ class AttractionsAdapter(
                 tvAttractionName.text = attraction.name
                 tvAttractionAddress.text = attraction.address
                 if (attraction.images.isNotEmpty()) {
-                    Glide.with(itemView).load(attraction.images.first().src).centerCrop().into(ivAttractionPicture)
+                    Glide.with(itemView)
+                        .load(attraction.images.first().src)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true)
+                        .centerCrop()
+                        .into(ivAttractionPicture)
                 }
             }
         }

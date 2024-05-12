@@ -1,14 +1,13 @@
 package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.country
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Country
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Language
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.FragmentCountrySelectionBinding
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.AttractionsViewModel
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.utils.SupportedCountries
@@ -36,15 +35,15 @@ class CountryDialogFragment : DialogFragment() {
         drawCountryList(anotherCountry)
     }
 
-    private fun drawCountryList(countries: List<Country>) {
+    private fun drawCountryList(countries: List<Language>) {
         countryAdapter = CountryAdapter(countries).apply {
             setOnClickListener(object : CountryAdapter.OnItemClickLister {
-                override fun onItemClick(country: Country) {
-                    Toast.makeText(requireContext(), country.name, Toast.LENGTH_SHORT).show()
+                override fun onItemClick(language: Language) {
+                    Toast.makeText(requireContext(), language.name, Toast.LENGTH_SHORT).show()
                     dialog?.dismiss()
                     sharedViewModel.apply {
-                        changeLanguage(country)
-                        getTouristAttractions(country.countryCode)
+                        changeLanguage(language)
+                        getTouristAttractions(language.languageCode)
                     }
                 }
             })
@@ -52,12 +51,12 @@ class CountryDialogFragment : DialogFragment() {
         binding.rvCountries.adapter = countryAdapter
     }
 
-    private fun getUnselectedCountries(): MutableList<Country> {
-        val selectedCountry = SupportedCountries.getDefaultCountry()
+    private fun getUnselectedCountries(): MutableList<Language> {
+        val selectedCountry = sharedViewModel.currentLanguage.value
         val supportedCountry = SupportedCountries.getSupportedCountries().toMutableList()
 
         supportedCountry.removeIf {
-            it.countryCode == selectedCountry.countryCode
+            it.languageCode == selectedCountry.languageCode
         }
 
         return supportedCountry

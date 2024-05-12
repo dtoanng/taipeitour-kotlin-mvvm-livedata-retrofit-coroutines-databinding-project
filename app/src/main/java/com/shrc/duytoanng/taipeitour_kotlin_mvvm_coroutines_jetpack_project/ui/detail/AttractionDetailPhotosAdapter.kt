@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Image
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.ViewAttractionsImageItemBinding
 
@@ -34,7 +35,12 @@ class AttractionDetailPhotosAdapter(private var photos: List<Image>) :
     inner class AttractionImageHolder(private val binding: ViewAttractionsImageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: String) {
-            Glide.with(itemView).load(photo).centerCrop().into(binding.images)
+            Glide.with(itemView)
+                .load(photo)
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(binding.images)
         }
     }
 }
