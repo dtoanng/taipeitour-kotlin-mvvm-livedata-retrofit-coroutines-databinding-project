@@ -9,6 +9,7 @@ espressoCore = "3.5.1"
 material = "1.12.0"
 lifecycleRuntimeKtx = "2.7.0"
 lifecycleViewModelKtx = "2.8.0-rc01"
+lifecycleLiveData = "2.2.0-alpha02"
 navigationFragment = "2.7.7"
 databinding = "8.4.0"
 multidex = "2.0.1"
@@ -26,6 +27,7 @@ constraintLayout = "2.1.4"
 appcompat = "1.6.1"
 paging = "3.2.1"
 viewpager2 = "1.1.0-rc01"
+datastore = "1.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,12 +38,14 @@ androidx-paging = { group = "androidx.paging", name = "paging-runtime", version.
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewModelKtx" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleViewModelKtx" }
 androidx-databinding-databinding-compiler-common = { group = "androidx.databinding", name = "databinding-compiler-common", version.ref = "databinding" }
 androidx-multidex = { group = "androidx.multidex", name = "multidex", version.ref = "multidex" }
 androidx-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintLayout" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerView" }
 androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
+androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
 
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
