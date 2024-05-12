@@ -18,8 +18,7 @@ class AttractionsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AttractionViewHolder {
-        val attractionItemBinding =
-            AttractionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val attractionItemBinding = AttractionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AttractionViewHolder(attractionItemBinding)
     }
 

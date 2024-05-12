@@ -1,6 +1,7 @@
 package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.home
 
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
@@ -8,6 +9,7 @@ import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.R
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.FragmentAttractionsHomeBinding
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.base.BaseFragment
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.country.CountryDialogFragment
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.utils.network.DataState
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -16,7 +18,8 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
 
     private lateinit var attractionsAdapter: AttractionsAdapter
 
-    override fun getViewBinding(): FragmentAttractionsHomeBinding = FragmentAttractionsHomeBinding.inflate(layoutInflater)
+    override fun getViewBinding(): FragmentAttractionsHomeBinding =
+        FragmentAttractionsHomeBinding.inflate(layoutInflater)
 
     override fun prepareData() {
         super.prepareData()
@@ -37,14 +40,26 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
 
                     else -> {
                         Timber.d("DataState.Success: ${Gson().toJson(dataState)}")
-                        updateRecyclerViewUI((dataState as DataState.Success).data.touristAttraction as MutableList<Attraction>)
+                        drawAttractions((dataState as DataState.Success).data.touristAttraction as MutableList<Attraction>)
                     }
                 }
             }
         }
+
+        lifecycleScope.launch {
+            sharedViewModel.currentCountry.collect { country ->
+                Timber.d("Selected country: $country")
+                binding.attractionTitleArea.ivSelectedCountry.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        country.src
+                    )
+                )
+            }
+        }
     }
 
-    private fun updateRecyclerViewUI(attractions: MutableList<Attraction>) {
+    private fun drawAttractions(attractions: MutableList<Attraction>) {
         // create adapter
         attractionsAdapter = AttractionsAdapter(attractions).apply {
             setOnClickListener(object : AttractionsAdapter.OnItemClickLister {
@@ -59,6 +74,13 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
         with(binding) {
             rvAttractions.adapter = attractionsAdapter
             loadingData.visibility = View.GONE
+        }
+    }
+
+    override fun setupListener() {
+        super.setupListener()
+        binding.attractionTitleArea.ivSelectedCountry.setOnClickListener {
+            CountryDialogFragment().show(childFragmentManager, "CountryDialogFragment")
         }
     }
 }

@@ -71,8 +71,4 @@ abstract class BaseFragment<VBinding : ViewBinding> : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
     }
-
-    companion object {
-        val TAG = this::class.java.simpleName
-    }
 }

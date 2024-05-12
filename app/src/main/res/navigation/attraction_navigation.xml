@@ -17,7 +17,12 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_attractsHomeFragment_to_countrySelectionFragment"
+            app:destination="@id/countrySelectionFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/attractionDetailFragment"
         android:name="com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.detail.AttractionDetailFragment"
@@ -27,4 +32,10 @@
             android:name="attraction"
             app:argType="com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction" />
     </fragment>
+
+    <fragment
+        android:id="@+id/countrySelectionFragment"
+        android:name="com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.country.CountrySelectionFragment"
+        android:label="CountrySelectionFragment"
+        tools:layout="@layout/fragment_country_selection"/>
 </navigation>

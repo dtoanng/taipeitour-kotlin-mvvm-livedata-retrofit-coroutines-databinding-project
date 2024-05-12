@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2.PageTransformer
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.R
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.FragmentAttractionDetailBinding
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.base.BaseFragment
-import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.detail.custom.HorizontalMarginItemDecoration
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.detail.animation.HorizontalMarginItemDecoration
 import kotlin.math.abs
 
 
