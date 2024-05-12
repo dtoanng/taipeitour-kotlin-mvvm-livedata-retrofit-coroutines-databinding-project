@@ -48,8 +48,7 @@ class AttractionsAdapter(
                 tvAttractionName.text = attraction.name
                 tvAttractionAddress.text = attraction.address
                 if (attraction.images.isNotEmpty()) {
-                    Glide.with(itemView).load(attraction.images.first().src).centerCrop()
-                        .into(ivAttractionPicture)
+                    Glide.with(itemView).load(attraction.images.first().src).centerCrop().into(ivAttractionPicture)
                 }
             }
         }

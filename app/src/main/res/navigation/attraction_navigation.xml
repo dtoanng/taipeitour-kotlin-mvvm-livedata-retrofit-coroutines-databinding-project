@@ -22,5 +22,9 @@
         android:id="@+id/attractionDetailFragment"
         android:name="com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.detail.AttractionDetailFragment"
         android:label="fragment_attraction_detail"
-        tools:layout="@layout/fragment_attraction_detail" />
+        tools:layout="@layout/fragment_attraction_detail">
+        <argument
+            android:name="attraction"
+            app:argType="com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction" />
+    </fragment>
 </navigation>

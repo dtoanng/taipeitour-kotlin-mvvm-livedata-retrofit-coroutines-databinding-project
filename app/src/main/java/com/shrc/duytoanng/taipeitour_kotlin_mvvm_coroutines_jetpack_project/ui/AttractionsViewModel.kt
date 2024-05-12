@@ -2,6 +2,7 @@ package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attractions
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.repository.TouristAttractionsRepository
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.utils.network.DataState
@@ -13,9 +14,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AttractionsViewModel @Inject constructor(private val repo: TouristAttractionsRepository) : ViewModel() {
+class AttractionsViewModel @Inject constructor(private val repo: TouristAttractionsRepository) :
+    ViewModel() {
 
     var page = 1
+    var currentAttraction: Attraction? = null
+    var currentLanguage = "en"
+
     val touristAttractions: MutableStateFlow<DataState<Attractions>> = MutableStateFlow(DataState.Loading)
 
     fun getTouristAttractions(lang: String) {
@@ -30,5 +35,7 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
     override fun onCleared() {
         super.onCleared()
         page = 1
+        currentAttraction = null
+        currentLanguage = "en"
     }
 }

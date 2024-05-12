@@ -34,7 +34,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -56,17 +59,18 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.navigation.ui.ktx)
 //    implementation(libs.androidx.navigation.navigation.safe.args)
-    implementation(libs.androidx.multidex)
-    implementation(libs.androidx.material)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.paging)
+    implementation(libs.androidx.multidex)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -83,14 +87,14 @@ dependencies {
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
 
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
+//    implementation(libs.room.runtime)
+//    implementation(libs.room.ktx)
+//    ksp(libs.room.compiler)
+//    implementation(libs.androidx.room)
 
     implementation(libs.glide)
 
     implementation(libs.timber)
-    implementation(libs.javax.inject)
     implementation(libs.gson)
 
     implementation(libs.ksp.gradlePlugin)
