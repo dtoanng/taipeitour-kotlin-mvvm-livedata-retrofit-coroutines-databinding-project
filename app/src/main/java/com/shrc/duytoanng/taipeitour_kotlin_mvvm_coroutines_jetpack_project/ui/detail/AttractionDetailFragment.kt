@@ -27,8 +27,10 @@ class AttractionDetailFragment : BaseFragment<FragmentAttractionDetailBinding>()
             with(binding) {
                 attractionDetailTitleArea.apply {
                     topContentName.text = it.name
+                    topContentName.visibility = View.VISIBLE
                     topBtnBack.visibility = View.VISIBLE
                     ivSelectedCountry.visibility = View.GONE
+                    ivLogo.visibility = View.GONE
                 }
 
                 txtAttractionName.text = it.name
