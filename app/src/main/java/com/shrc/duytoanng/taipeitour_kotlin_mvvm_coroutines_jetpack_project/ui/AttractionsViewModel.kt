@@ -22,9 +22,11 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
     ViewModel() {
 
     var currentAttraction: Attraction? = null
+    var backupLanguage: Language = SupportedCountries.getDefaultCountry()
 
     val touristAttractions: MutableStateFlow<DataState<Attractions>> = MutableStateFlow(DataState.Loading)
-    private val _currentLanguage = MutableStateFlow(SupportedCountries.getDefaultCountry())
+
+    private val _currentLanguage = MutableStateFlow(backupLanguage)
     val currentLanguage: StateFlow<Language> = _currentLanguage
 
     fun getTouristAttractions(lang: String) {

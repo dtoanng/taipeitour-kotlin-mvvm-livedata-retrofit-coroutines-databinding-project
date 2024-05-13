@@ -1,12 +1,14 @@
 package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.home
 
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.R
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Language
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.FragmentAttractionsHomeBinding
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.base.BaseFragment
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.country.CountryDialogFragment
@@ -16,6 +18,8 @@ import timber.log.Timber
 
 class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
 
+    private lateinit var backupLanguage: Language
+    private var newLanguage: Language? = null
     private lateinit var attractionsAdapter: AttractionsAdapter
 
     override fun getViewBinding(): FragmentAttractionsHomeBinding =
@@ -23,7 +27,8 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
 
     override fun prepareData() {
         super.prepareData()
-        sharedViewModel.getTouristAttractions("en")
+        backupLanguage = sharedViewModel.backupLanguage
+        sharedViewModel.getTouristAttractions(backupLanguage.languageCode)
     }
 
     override fun observeData() {
@@ -32,23 +37,32 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
                 when (dataState) {
                     is DataState.Loading -> {
                         Timber.d("DataState.Loading")
+                        binding.loadingData.visibility = View.VISIBLE
                     }
 
                     is DataState.Error -> {
                         Timber.d("DataState.Error: ${dataState.exception}")
+                        binding.loadingData.visibility = View.GONE
+                        Toast.makeText(requireContext(), "Error:  ${dataState.exception.message}", Toast.LENGTH_SHORT).show()
+
+                        //revert to previous flag if an error...
+                        sharedViewModel.changeLanguage(sharedViewModel.backupLanguage)
                     }
 
                     else -> {
                         Timber.d("DataState.Success: ${Gson().toJson(dataState)}")
+                        newLanguage?.let { sharedViewModel.backupLanguage = it }
                         drawAttractions((dataState as DataState.Success).data.touristAttraction as MutableList<Attraction>)
                     }
                 }
             }
         }
 
+        // observe changing language to update flag
         lifecycleScope.launch {
             sharedViewModel.currentLanguage.collect { country ->
                 Timber.d("Selected country: $country")
+                newLanguage = country
                 binding.attractionTitleArea.ivSelectedCountry.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
