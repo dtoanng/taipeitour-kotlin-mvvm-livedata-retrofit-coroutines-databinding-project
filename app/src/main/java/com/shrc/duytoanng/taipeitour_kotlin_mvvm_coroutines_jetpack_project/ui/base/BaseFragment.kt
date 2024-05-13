@@ -1,5 +1,6 @@
 package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.base
 
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -18,7 +18,6 @@ import timber.log.Timber
 
 class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
 
-    private lateinit var backupLanguage: Language
     private var newLanguage: Language? = null
     private lateinit var attractionsAdapter: AttractionsAdapter
 
@@ -27,8 +26,7 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
 
     override fun prepareData() {
         super.prepareData()
-        backupLanguage = sharedViewModel.backupLanguage
-        sharedViewModel.getTouristAttractions(backupLanguage.languageCode)
+        sharedViewModel.getAvailableLanguage()
     }
 
     override fun observeData() {
@@ -52,6 +50,7 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
                     else -> {
                         Timber.d("DataState.Success: ${Gson().toJson(dataState)}")
                         newLanguage?.let { sharedViewModel.backupLanguage = it }
+                        sharedViewModel.setDefaultLanguage()
                         drawAttractions((dataState as DataState.Success).data.touristAttraction as MutableList<Attraction>)
                     }
                 }
