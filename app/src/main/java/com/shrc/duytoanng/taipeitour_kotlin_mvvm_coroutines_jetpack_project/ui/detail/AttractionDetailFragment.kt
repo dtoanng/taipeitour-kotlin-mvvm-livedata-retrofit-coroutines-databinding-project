@@ -34,6 +34,7 @@ class AttractionDetailFragment : BaseFragment<FragmentAttractionDetailBinding>()
                 }
 
                 txtAttractionName.text = it.name
+                txtAttractionAddress.text = it.address
                 txtAttractionDescription.text = it.introduction
 
                 photoAdapter = AttractionDetailPhotosAdapter(it.images)

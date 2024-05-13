@@ -18,14 +18,13 @@
             android:layout_height="120dp"
             android:contentDescription="TODO"
             android:scaleType="centerCrop"
-            android:src="@drawable/default_thumbnail"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:srcCompat="@drawable/default_thumbnail" />
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tvAttractionName"
@@ -36,10 +35,7 @@
             android:ellipsize="marquee"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:maxLines="2"
-            android:textColor="#00A2AE"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -54,7 +50,7 @@
             android:ellipsize="marquee"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
-            android:textSize="10sp"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="@+id/tvAttractionName"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/tvAttractionName"
@@ -67,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.6" />
+            app:layout_constraintGuide_percent="0.5" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -75,6 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.35" />
+            app:layout_constraintGuide_percent="0.31" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

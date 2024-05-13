@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.AttractionItemBinding
 
@@ -51,8 +52,8 @@ class AttractionsAdapter(
                 if (attraction.images.isNotEmpty()) {
                     Glide.with(itemView)
                         .load(attraction.images.first().src)
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .skipMemoryCache(true)
+                        .sizeMultiplier(0.6f)
+                        .transition(DrawableTransitionOptions.withCrossFade())
                         .centerCrop()
                         .into(ivAttractionPicture)
                 }

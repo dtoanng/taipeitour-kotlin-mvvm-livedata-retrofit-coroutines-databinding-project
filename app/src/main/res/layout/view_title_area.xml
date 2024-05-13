@@ -24,7 +24,7 @@
             android:clickable="true"
             android:contentDescription="@string/dummy_back"
             android:focusable="true"
-            tools:src="@drawable/arrow_back_light" />
+            tools:src="@drawable/arrow_back" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,7 +44,7 @@
             android:gravity="center"
             android:singleLine="true"
             android:text="@string/dummy_title"
-            android:textColor="@color/ATTRACTION_DESCIPTION"
+            android:textColor="@color/TITLE_AREA_TEXT"
             android:textSize="19sp"
             android:textStyle="bold"
             android:visibility="gone"

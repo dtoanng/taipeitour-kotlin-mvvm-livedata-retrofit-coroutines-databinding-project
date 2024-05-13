@@ -16,6 +16,6 @@
     </style>
 
     <style name="backButton">
-        <item name="android:src">@drawable/arrow_back_dark</item>
+        <item name="android:src">@drawable/arrow_back</item>
     </style>
 </resources>
