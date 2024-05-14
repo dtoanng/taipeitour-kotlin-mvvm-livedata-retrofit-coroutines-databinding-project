@@ -1,8 +1,8 @@
 # Taipei TouristAttractions App ✔️
 
-#### A simple News App 📱 built to demonstrate the use of modern android architecture component with MVVM Architecture 🏗
+#### A simple TouristAttractions App 📱 built to demonstrate the use of modern android architecture component with MVVM Architecture 🏗
 
-The App is using the [News Api] to getting attractions.
+The App is using the [travel.taipei/open-api] to getting attractions.
 
 ### Build With 🏗️
 - [Kotlin] - Programming language for Android
