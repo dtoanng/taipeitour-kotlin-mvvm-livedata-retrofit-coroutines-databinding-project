@@ -18,3 +18,5 @@ The App is using the [News Api] to getting attractions.
 ### Project Architecture 🗼
 
 This app uses [MVVM (Model View View-Model)] architecture.
+
+![alt text](https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/taipeitour.jpg)
