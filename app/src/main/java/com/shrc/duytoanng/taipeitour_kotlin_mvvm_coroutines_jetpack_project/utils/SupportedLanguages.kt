@@ -12,7 +12,7 @@ class SupportedCountries {
             Language("Japanese", "ja", R.drawable.ja),
             Language("Korean", "ko", R.drawable.ko),
             Language("Spanish", "es", R.drawable.sp),
-            Language("Indonesian", "in", R.drawable.id),
+            Language("Indonesian", "id", R.drawable.id),
             Language("Thai", "th", R.drawable.th),
             Language("Vietnamese", "vi", R.drawable.vi),
         )
