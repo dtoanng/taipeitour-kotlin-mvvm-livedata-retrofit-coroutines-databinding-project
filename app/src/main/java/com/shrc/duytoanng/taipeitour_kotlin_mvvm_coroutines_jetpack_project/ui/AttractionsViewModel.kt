@@ -17,6 +17,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -41,7 +42,7 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
 
     fun checkInternetConnection(context: Context) {
         viewModelScope.launch {
-            context.observeConnectivityAsFlow().collect {
+            context.observeConnectivityAsFlow().distinctUntilChanged().collect {
 
                 _networkState.value = it == ConnectionState.Available
 
