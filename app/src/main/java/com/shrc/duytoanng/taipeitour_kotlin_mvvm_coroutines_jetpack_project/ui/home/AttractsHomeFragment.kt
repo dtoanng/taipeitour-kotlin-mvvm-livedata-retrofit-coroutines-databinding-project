@@ -26,10 +26,12 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
 
     override fun prepareData() {
         super.prepareData()
-        sharedViewModel.getAvailableLanguage()
+        sharedViewModel.fetchData()
     }
 
     override fun observeData() {
+        super.observeData()
+        // observe data from Api
         lifecycleScope.launch {
             sharedViewModel.touristAttractions.collect { dataState ->
                 when (dataState) {
@@ -49,9 +51,15 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
 
                     else -> {
                         Timber.d("DataState.Success: ${Gson().toJson(dataState)}")
-                        newLanguage?.let { sharedViewModel.backupLanguage = it }
-                        sharedViewModel.setDefaultLanguage()
-                        drawAttractions((dataState as DataState.Success).data.touristAttraction as MutableList<Attraction>)
+                        val attractions = (dataState as DataState.Success).data.touristAttraction as MutableList<Attraction>
+
+                        sharedViewModel.apply {
+                            newLanguage?.let { this.backupLanguage = it }
+                            setDefaultLanguage()
+                            setCurrentAttractionsList(attractions)
+                        }
+
+                        drawAttractions(attractions)
                     }
                 }
             }

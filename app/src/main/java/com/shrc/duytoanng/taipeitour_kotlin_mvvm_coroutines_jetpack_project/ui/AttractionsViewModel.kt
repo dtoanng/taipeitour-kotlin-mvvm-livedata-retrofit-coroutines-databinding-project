@@ -1,5 +1,6 @@
 package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.datasource.local.PreferenceDataStoreConstants
@@ -10,7 +11,10 @@ import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.repository.TouristAttractionsRepository
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.utils.SupportedCountries
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.utils.network.DataState
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.utils.networkconnection.ConnectionState
+import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.utils.networkconnection.observeConnectivityAsFlow
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
@@ -25,13 +29,31 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
 
     var currentAttraction: Attraction? = null
     var backupLanguage: Language = SupportedCountries.getDefaultCountry()
+    private val _attractions by lazy { mutableListOf<Attraction>() }
 
     val touristAttractions: MutableStateFlow<DataState<Attractions>> = MutableStateFlow(DataState.Loading)
 
     private val _currentLanguage = MutableStateFlow(backupLanguage)
     val currentLanguage: StateFlow<Language> = _currentLanguage
 
-    fun getAvailableLanguage() {
+    private val _networkState = MutableStateFlow(false)
+    val networkState: StateFlow<Boolean> = _networkState
+
+    fun checkInternetConnection(context: Context) {
+        viewModelScope.launch {
+            context.observeConnectivityAsFlow().collect {
+
+                _networkState.value = it == ConnectionState.Available
+
+                delay(500)
+                if (it == ConnectionState.Available && _attractions.isEmpty()) {
+                    getTouristAttractions(backupLanguage.languageCode)
+                }
+            }
+        }
+    }
+
+    fun fetchData() {
         viewModelScope.launch {
             dataStore.getPreference(PreferenceDataStoreConstants.COUNTRY_KEY, SupportedCountries.getDefaultCountry().languageCode).first {
 
@@ -41,10 +63,10 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
                 }
 
                 // get attractions after there is a user's selections
-                getTouristAttractions(it)
+                getTouristAttractions(backupLanguage.languageCode)
 
                 // change language flag to saved language before
-                changeLanguage(backupLanguage)
+                setCurrentLanguage(backupLanguage)
                 true
             }
         }
@@ -66,7 +88,18 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
 
     fun changeLanguage(language: Language) {
         viewModelScope.launch {
-            _currentLanguage.value = language
+            setCurrentLanguage(language)
+        }
+    }
+
+    private fun setCurrentLanguage(language: Language) {
+        _currentLanguage.value = language
+    }
+
+    fun setCurrentAttractionsList(attractions: List<Attraction>) {
+        _attractions.apply {
+            clear()
+            addAll(attractions)
         }
     }
 
