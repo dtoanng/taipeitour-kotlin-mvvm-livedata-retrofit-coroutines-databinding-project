@@ -37,7 +37,7 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
     private val _currentLanguage = MutableStateFlow(backupLanguage)
     val currentLanguage: StateFlow<Language> = _currentLanguage
 
-    private val _networkState = MutableStateFlow(false)
+    private val _networkState = MutableStateFlow(true)
     val networkState: StateFlow<Boolean> = _networkState
 
     fun checkInternetConnection(context: Context) {
