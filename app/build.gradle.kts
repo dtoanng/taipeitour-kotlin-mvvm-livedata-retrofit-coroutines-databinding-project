@@ -66,7 +66,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.navigation.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.navigation.ui.ktx)
-//    implementation(libs.androidx.navigation.navigation.safe.args)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.datastore)
@@ -88,11 +87,6 @@ dependencies {
 
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
-
-//    implementation(libs.room.runtime)
-//    implementation(libs.room.ktx)
-//    ksp(libs.room.compiler)
-//    implementation(libs.androidx.room)
 
     implementation(libs.glide)
 
