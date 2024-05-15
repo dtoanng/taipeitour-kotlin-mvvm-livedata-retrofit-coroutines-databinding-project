@@ -1,5 +1,6 @@
 package com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.ui.home
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +41,17 @@ class AttractionsAdapter(
 
     fun setOnClickListener(listener: OnItemClickLister) {
         this.onItemClickLister = listener
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun loadMoreData(newAttractions: List<Attraction>) {
+        attractions.addAll(newAttractions)
+        notifyDataSetChanged()
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearData() {
+        attractions.clear()
+        notifyDataSetChanged()
     }
 
     inner class AttractionViewHolder(private val binding: AttractionItemBinding) :

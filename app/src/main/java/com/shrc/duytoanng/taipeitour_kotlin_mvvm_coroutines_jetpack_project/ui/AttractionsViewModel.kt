@@ -30,7 +30,8 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
 
     var currentAttraction: Attraction? = null
     var backupLanguage: Language = SupportedCountries.getDefaultCountry()
-    private val _attractions by lazy { mutableListOf<Attraction>() }
+    val attractions by lazy { mutableListOf<Attraction>() }
+    var attractionsPage = 1
 
     val touristAttractions: MutableStateFlow<DataState<Attractions>> = MutableStateFlow(DataState.Loading)
 
@@ -47,7 +48,7 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
                 _networkState.value = it == ConnectionState.Available
 
                 delay(500)
-                if (it == ConnectionState.Available && _attractions.isEmpty()) {
+                if (it == ConnectionState.Available && attractions.isEmpty()) {
                     getTouristAttractions(backupLanguage.languageCode)
                 }
             }
@@ -81,7 +82,7 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
 
     fun getTouristAttractions(lang: String) {
         viewModelScope.launch {
-            repo.getAttractions(lang, 1).onEach {
+            repo.getAttractions(lang, attractionsPage).onEach {
                 touristAttractions.value = it
             }.launchIn(viewModelScope)
         }
@@ -95,13 +96,6 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
 
     private fun setCurrentLanguage(language: Language) {
         _currentLanguage.value = language
-    }
-
-    fun setCurrentAttractionsList(attractions: List<Attraction>) {
-        _attractions.apply {
-            clear()
-            addAll(attractions)
-        }
     }
 
     override fun onCleared() {
