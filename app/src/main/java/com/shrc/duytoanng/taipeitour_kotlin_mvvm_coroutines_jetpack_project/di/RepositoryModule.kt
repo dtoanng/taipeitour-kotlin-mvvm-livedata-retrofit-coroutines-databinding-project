@@ -16,7 +16,6 @@ object RepositoryModule {
     @Provides
     fun provideTouristAttractionsRepository(
         apiService: AttractionsApiService,
-    ): TouristAttractionsRepository {
-        return TouristAttractionsRepository(apiService)
-    }
+    ): TouristAttractionsRepository = TouristAttractionsRepository(apiService)
+
 }

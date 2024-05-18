@@ -58,16 +58,6 @@ class AttractionDetailFragment : BaseFragment<FragmentAttractionDetailBinding>()
                     )
                     addItemDecoration(itemDecoration)
                 }
-
-                attractionDetailTitleArea.icBtnBack.setOnClickListener {
-                    if (attractionWebView.visibility == View.VISIBLE) {
-                        attractionWebView.visibility = View.GONE
-                        binding.fabAttractDetails.text = "Detail"
-                    } else {
-                        sharedViewModel.currentAttraction = null
-                        findNavController().popBackStack()
-                    }
-                }
             }
         }
     }
@@ -75,19 +65,31 @@ class AttractionDetailFragment : BaseFragment<FragmentAttractionDetailBinding>()
     @SuppressLint("SetJavaScriptEnabled")
     override fun setupListener() {
         super.setupListener()
-        binding.fabAttractDetails.setOnClickListener {
-            if (binding.attractionWebView.visibility != View.VISIBLE) {
-                binding.attractionWebView.apply {
-                    visibility = View.VISIBLE
-                    webViewClient = WebViewClient()
-                    webChromeClient = WebChromeClient()
-                    settings.javaScriptEnabled = true
-                    attraction?.let { att -> loadUrl(att.url) }
+        with(binding) {
+            fabAttractDetails.setOnClickListener {
+                if (binding.attractionWebView.visibility != View.VISIBLE) {
+                    binding.attractionWebView.apply {
+                        visibility = View.VISIBLE
+                        webViewClient = WebViewClient()
+                        webChromeClient = WebChromeClient()
+                        settings.javaScriptEnabled = true
+                        attraction?.let { att -> loadUrl(att.url) }
+                    }
+                    binding.fabAttractDetails.text = "Back"
+                } else {
+                    binding.fabAttractDetails.text = "Detail"
+                    binding.attractionWebView.visibility = View.GONE
                 }
-                binding.fabAttractDetails.text = "Back"
-            } else {
-                binding.fabAttractDetails.text = "Detail"
-                binding.attractionWebView.visibility = View.GONE
+            }
+
+            attractionDetailTitleArea.icBtnBack.setOnClickListener {
+                if (attractionWebView.visibility == View.VISIBLE) {
+                    attractionWebView.visibility = View.GONE
+                    binding.fabAttractDetails.text = "Detail"
+                } else {
+                    sharedViewModel.currentAttraction = null
+                    findNavController().popBackStack()
+                }
             }
         }
     }

@@ -25,7 +25,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AttractionsViewModel @Inject constructor(private val repo: TouristAttractionsRepository, private val dataStore: PreferenceDataStoreHelper) :
+class AttractionsViewModel @Inject constructor(
+    private val repo: TouristAttractionsRepository,
+    private val dataStore: PreferenceDataStoreHelper
+) :
     ViewModel() {
 
     var currentAttraction: Attraction? = null
@@ -33,7 +36,8 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
     val attractions by lazy { mutableListOf<Attraction>() }
     var attractionsPage = 1
 
-    val touristAttractions: MutableStateFlow<DataState<Attractions>> = MutableStateFlow(DataState.Loading)
+    val touristAttractions: MutableStateFlow<DataState<Attractions>> =
+        MutableStateFlow(DataState.Loading)
 
     private val _currentLanguage = MutableStateFlow(backupLanguage)
     val currentLanguage: StateFlow<Language> = _currentLanguage
@@ -57,7 +61,10 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
 
     fun fetchData() {
         viewModelScope.launch {
-            dataStore.getPreference(PreferenceDataStoreConstants.COUNTRY_KEY, SupportedCountries.getDefaultCountry().languageCode).first {
+            dataStore.getPreference(
+                PreferenceDataStoreConstants.COUNTRY_KEY,
+                SupportedCountries.getDefaultCountry().languageCode
+            ).first {
 
                 // set backup language from local
                 backupLanguage = SupportedCountries.getSupportedCountries().first { lang ->
@@ -76,13 +83,16 @@ class AttractionsViewModel @Inject constructor(private val repo: TouristAttracti
 
     fun setDefaultLanguage() {
         viewModelScope.launch {
-            dataStore.putPreference(PreferenceDataStoreConstants.COUNTRY_KEY, backupLanguage.languageCode)
+            dataStore.putPreference(
+                PreferenceDataStoreConstants.COUNTRY_KEY,
+                backupLanguage.languageCode
+            )
         }
     }
 
-    fun getTouristAttractions(lang: String) {
+    fun getTouristAttractions(lang: String, page: Int = attractionsPage) {
         viewModelScope.launch {
-            repo.getAttractions(lang, attractionsPage).onEach {
+            repo.getAttractions(lang, page).onEach {
                 touristAttractions.value = it
             }.launchIn(viewModelScope)
         }

@@ -20,41 +20,37 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideBaseUrl(): String {
-        return ApiConstants.BASE_URL
-    }
+    fun provideBaseUrl(): String = ApiConstants.BASE_URL
+
 
     @Singleton
     @Provides
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-    }
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
-        val okHttpClient = OkHttpClient().newBuilder()
-        okHttpClient.addInterceptor { chain ->
-            chain.proceed(
-                chain.request().newBuilder().also {
-                    it.addHeader("accept", "application/json")
-                }.build()
-            )
-        }
-        okHttpClient.callTimeout(40, TimeUnit.SECONDS)
-        okHttpClient.connectTimeout(40, TimeUnit.SECONDS)
-        okHttpClient.readTimeout(40, TimeUnit.SECONDS)
-        okHttpClient.writeTimeout(40, TimeUnit.SECONDS)
-        okHttpClient.addInterceptor(loggingInterceptor)
-        okHttpClient.build()
-        return okHttpClient.build()
-    }
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+        OkHttpClient().newBuilder()
+            .addInterceptor { chain ->
+                chain.proceed(
+                    chain.request().newBuilder().also {
+                        it.addHeader("accept", "application/json")
+                    }.build()
+                )
+            }
+            .callTimeout(40, TimeUnit.SECONDS)
+            .connectTimeout(40, TimeUnit.SECONDS)
+            .readTimeout(40, TimeUnit.SECONDS)
+            .writeTimeout(40, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor)
+            .build()
 
     @Singleton
     @Provides
-    fun provideConverterFactory(): Converter.Factory {
-        return GsonConverterFactory.create()
-    }
+    fun provideConverterFactory(): Converter.Factory = GsonConverterFactory.create()
+
 
     @Singleton
     @Provides
@@ -62,17 +58,16 @@ object NetworkModule {
         baseUrl: String,
         okHttpClient: OkHttpClient,
         converterFactory: Converter.Factory
-    ): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .client(okHttpClient)
-            .addConverterFactory(converterFactory)
-            .build()
-    }
+    ): Retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .client(okHttpClient)
+        .addConverterFactory(converterFactory)
+        .build()
+
 
     @Singleton
     @Provides
-    fun provideRestApiService(retrofit: Retrofit): AttractionsApiService {
-        return retrofit.create(AttractionsApiService::class.java)
-    }
+    fun provideRestApiService(retrofit: Retrofit): AttractionsApiService =
+        retrofit.create(AttractionsApiService::class.java)
+
 }

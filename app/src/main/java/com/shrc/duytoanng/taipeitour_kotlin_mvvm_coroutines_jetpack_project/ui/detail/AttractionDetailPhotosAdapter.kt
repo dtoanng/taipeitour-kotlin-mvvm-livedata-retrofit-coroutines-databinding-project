@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Image
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.databinding.ViewAttractionsImageItemBinding
 
@@ -37,9 +38,11 @@ class AttractionDetailPhotosAdapter(private var photos: List<Image>) :
         fun bind(photo: String) {
             Glide.with(itemView)
                 .load(photo)
-                .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
+                .sizeMultiplier(0.6f)
+                .centerCrop()
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.images)
         }
     }

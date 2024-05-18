@@ -64,9 +64,11 @@ class AttractionsAdapter(
                 if (attraction.images.isNotEmpty()) {
                     Glide.with(itemView)
                         .load(attraction.images.first().src)
-                        .sizeMultiplier(0.6f)
-                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true)
                         .centerCrop()
+                        .sizeMultiplier(0.5f)
+                        .transition(DrawableTransitionOptions.withCrossFade())
                         .into(ivAttractionPicture)
                 }
             }

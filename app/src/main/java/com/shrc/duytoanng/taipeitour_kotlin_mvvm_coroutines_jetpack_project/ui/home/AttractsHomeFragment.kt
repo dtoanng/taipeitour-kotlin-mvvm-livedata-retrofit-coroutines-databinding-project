@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.R
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Attraction
 import com.shrc.duytoanng.taipeitour_kotlin_mvvm_coroutines_jetpack_project.data.model.Language
@@ -91,7 +92,7 @@ class AttractsHomeFragment : BaseFragment<FragmentAttractionsHomeBinding>() {
 
                     else -> {
                         binding.loadingData.visibility = View.GONE
-
+                        Timber.d("DataState.Success:\npage: ${sharedViewModel.attractionsPage}\nData: ${Gson().toJson(dataState)}")
                         with(sharedViewModel) {
                             if (this.backupLanguage != newLanguage) {
                                 this.backupLanguage = newLanguage!!

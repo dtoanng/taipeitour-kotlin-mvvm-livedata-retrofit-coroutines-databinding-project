@@ -43,7 +43,7 @@ class CountryDialogFragment : DialogFragment() {
                     dialog?.dismiss()
                     sharedViewModel.apply {
                         changeLanguage(language)
-                        getTouristAttractions(language.languageCode)
+                        getTouristAttractions(language.languageCode, 1)
                     }
                 }
             })
