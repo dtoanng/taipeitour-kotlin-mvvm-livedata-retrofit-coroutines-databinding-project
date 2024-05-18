@@ -2,6 +2,18 @@
 
 #### A simple TouristAttractions App 📱 built to demonstrate the use of modern android architecture component with MVVM Architecture 🏗
 
+<p float="left">
+  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_1.gif" />
+  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_2.gif" />
+  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_3.gif" />
+  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_4.gif" />
+  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_5.gif" />
+  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_6.gif" />
+  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_7.gif" />
+</p>
+
+![alt text](https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/taipeitour.jpg)
+
 The App is using the [travel.taipei/open-api] to getting attractions.
 
 ### Build With 🏗️
@@ -18,5 +30,3 @@ The App is using the [travel.taipei/open-api] to getting attractions.
 ### Project Architecture 🗼
 
 This app uses [MVVM (Model View View-Model)] architecture.
-
-![alt text](https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/taipeitour.jpg)
