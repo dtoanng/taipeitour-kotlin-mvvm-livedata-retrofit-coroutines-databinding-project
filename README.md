@@ -23,8 +23,6 @@ Image:
   <img width="15%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/screenshoot/20240518_6.png" />
 </p>
 
-![alt text](https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/taipeitour.jpg)
-
 The App is using the [travel.taipei/open-api] to getting attractions.
 
 ### Build With 🏗️
