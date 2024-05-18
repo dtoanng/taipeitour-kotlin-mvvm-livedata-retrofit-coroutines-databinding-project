@@ -2,14 +2,25 @@
 
 #### A simple TouristAttractions App 📱 built to demonstrate the use of modern android architecture component with MVVM Architecture 🏗
 
+Gif:
 <p float="left">
-  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_1.gif" />
-  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_2.gif" />
-  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_3.gif" />
-  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_4.gif" />
-  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_5.gif" />
-  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_6.gif" />
-  <img width="14%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_7.gif" />
+  <img width="13%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_1.gif" />
+  <img width="13%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_2.gif" />
+  <img width="13%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_3.gif" />
+  <img width="13%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_4.gif" />
+  <img width="13%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_5.gif" />
+  <img width="13%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_6.gif" />
+  <img width="13%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/gif/20240518_084929_7.gif" />
+</p>
+
+Image:
+<p float="left">
+  <img width="15%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/screenshoot/20240518_1.png" />
+  <img width="15%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/screenshoot/20240518_2.png" />
+  <img width="15%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/screenshoot/20240518_3.png" />
+  <img width="15%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/screenshoot/20240518_4.png" />
+  <img width="15%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/screenshoot/20240518_5.png" />
+  <img width="15%" height="50%" src="https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/screenshoot/20240518_6.png" />
 </p>
 
 ![alt text](https://github.com/dtoanng/taipeitour-kotlin-mvvm-livedata-retrofit-coroutines-databinding-project/blob/main/taipeitour.jpg)
